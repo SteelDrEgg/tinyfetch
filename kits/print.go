@@ -7,10 +7,12 @@ import (
 )
 
 var printRed func(a ...interface{})
+var printHost func(a ...interface{})
 var printTab func(a ...interface{})
 
 func init() {
-	printRed = color.New(color.FgRed).PrintFunc()
+	printRed = color.New(color.FgRed, color.Bold).PrintFunc()
+	printHost = color.New(color.FgGreen, color.Bold).PrintFunc()
 	printTab = printRed
 }
 
@@ -29,7 +31,7 @@ func calcSpacing(word string, width int) string {
 }
 
 func PrintMaterial(material []*Tab) {
-	temp := *material[0]
+	temp := *material[1]
 	os := strings.Split(temp.Content, " ")[0]
 	var logo [18]string
 	if os == "macOS" {
@@ -38,6 +40,8 @@ func PrintMaterial(material []*Tab) {
 		logo = Logos("ubuntu")
 	} else if os == "arch" {
 		logo = Logos("arch")
+	} else if os == "centos" {
+		logo = Logos("centos")
 	} else {
 		logo = Logos("linux")
 	}
@@ -47,8 +51,12 @@ func PrintMaterial(material []*Tab) {
 		if index < len(material) {
 			fmt.Print(line)
 			material := *material[index]
-			printTab(material.Title + ":" + calcSpacing(material.Title, 8))
-			fmt.Println(material.Content)
+			if material.Title == "User" {
+				printHost(calcSpacing(material.Title, 8) + material.Content + "\n")
+			} else {
+				printTab(calcSpacing(material.Title, 8) + material.Title + ": ")
+				fmt.Println(material.Content)
+			}
 		} else {
 			fmt.Println(line)
 		}

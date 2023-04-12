@@ -129,6 +129,27 @@ var archLogo = [18]string{
 	" SbC                                 PGo",
 }
 
+var centosLogo = [18]string{
+	"                    GGQo                   ",
+	"                  SGGGGGQo                 ",
+	"        oooooo  oooo Gb)ssss esssssp       ",
+	"        GGGG (QGGGGG Gb)QQQQQbcSQQQb       ",
+	"        GD GQo GGGGG Gb)QQQSb)QSbPSb       ",
+	"         GGo GGo GGG Gb)QSbsQSbsQQp(       ",
+	"        GGGGGs )Gs ) Gb)bsQbbsQQQQQQ       ",
+	"    sQb GGGGGGGGc)QG ) )Qb)sQQQQQQQb)Qb    ",
+	"  sQQQQQQQQQQQQQQQp     )QQQQQQQQQQQQQQQbc ",
+	"   PQQb)QQQQQQQQpcpp     p)pppppppppdQQbb  ",
+	"     Pb)QQQQQQSbsQSb Go PQs PGGGGGGb)bP    ",
+	"        QQQQbbsQbbsQ GO)s )Gs )GGGGC       ",
+	"       )pPbbsQb)sQQQ GO)GGSc)QSc)C)G       ",
+	"       )QQQQb)QQQQQQ GO)GGGGQo(GQQGb       ",
+	"       )QQQQQpPQQQQQ GO)GGGGb (QGGGb       ",
+	"        ((((((  cspp(GDooo                 ",
+	"                   GGGGGC                  ",
+	"                     GC                    ",
+}
+
 //var genericLogo =[21]string{
 //	"               sQQQQQQSQQ               ",
 //	"              QQQQQQQQQQQQQ             ",
@@ -205,6 +226,8 @@ func Logos(os string) [18]string {
 		return appleLogo
 	} else if os == "arch" {
 		return archLogo
+	} else if os == "centos" {
+		return centosLogo
 	} else if os == "linux" {
 		return genericLogo
 	}

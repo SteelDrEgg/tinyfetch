@@ -10,6 +10,7 @@ import (
 )
 
 var printMaterial []*kits.Tab
+var kernel string
 
 func memFmt() {
 	memStat, _ := mem.VirtualMemory()
@@ -27,14 +28,14 @@ func memFmt() {
 func cpuFmt() {
 	cpuStat, _ := cpu.Info()
 	var name string = cpuStat[0].ModelName
-	var cores string = fmt.Sprintf("%v", cpuStat[0].Cores)
+	var threads string = fmt.Sprintf("%v", cpuStat[0].Cores)
 	var count string = ""
 	if len(cpuStat) > 1 {
 		count = fmt.Sprintf("x%v", len(cpuStat))
 	}
 	printMaterial = append(
 		printMaterial,
-		&kits.Tab{Title: "CPU", Content: name + " (" + cores + ")" + " " + count},
+		&kits.Tab{Title: "CPU", Content: name + " (" + threads + ")" + " " + count},
 	)
 }
 
@@ -57,11 +58,18 @@ func hostFmt() {
 	} else if os == "darwin" {
 		os = "macOS"
 	}
+	users, _ := host.Users()
+	hostName := hostStat.Hostname
 	osVer := hostStat.PlatformVersion
 
 	arch := hostStat.KernelArch
-	kernel := hostStat.OS
+	kernel = hostStat.OS
 	kernalVer := hostStat.KernelVersion
+
+	printMaterial = append(
+		printMaterial,
+		&kits.Tab{Title: "User", Content: users[0].User + "@" + hostName},
+	)
 
 	printMaterial = append(
 		printMaterial,
@@ -74,10 +82,20 @@ func hostFmt() {
 	)
 }
 
+func gpuFmt() {
+	gpu := kits.FindGPU(kernel)
+	printMaterial = append(
+		printMaterial,
+		&kits.Tab{Title: "GPU", Content: gpu},
+	)
+}
+
 func main() {
+
 	hostFmt()
 	cpuFmt()
 	memFmt()
+	gpuFmt()
 	diskFmt()
 
 	kits.PrintMaterial(printMaterial)
