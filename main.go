@@ -17,7 +17,7 @@ func memFmt() {
 	var total string = kits.ProperUnit(memStat.Total)
 	var used string = kits.ProperUnit(memStat.Used)
 	var swap string = kits.ProperUnit(memStat.SwapTotal)
-	var usage string = kits.Float2string(memStat.UsedPercent) + "%"
+	var usage string = kits.Float2string(memStat.UsedPercent, 0) + "%"
 	printMaterial = append(
 		printMaterial,
 		&kits.Tab{Title: "RAM", Content: used + " / " + total + " (" + usage + ")"},
@@ -35,7 +35,7 @@ func cpuFmt() {
 	}
 	printMaterial = append(
 		printMaterial,
-		&kits.Tab{Title: "CPU", Content: name + " (" + threads + ")" + " " + count},
+		&kits.Tab{Title: "CPU", Content: name + " (" + threads + count + ")"},
 	)
 }
 
@@ -43,7 +43,7 @@ func diskFmt() {
 	diskStat, _ := disk.Usage("/")
 	total := kits.ProperUnit(diskStat.Total)
 	used := kits.ProperUnit(diskStat.Used)
-	usage := kits.Float2string(diskStat.UsedPercent)
+	usage := kits.Float2string(diskStat.UsedPercent, 0)
 	printMaterial = append(
 		printMaterial,
 		&kits.Tab{Title: "Disk", Content: used + " / " + total + " (" + usage + "%)"},
