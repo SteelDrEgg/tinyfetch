@@ -9,4 +9,4 @@ Fun toy for displaying system infos written in Golang
 
 </center>
 
-**Note** macOS might encounter problems running executable from *Release*, I strongly recommend you to compile on your own system
+**Note**: macOS may encounter problems running executable from *Release*, I strongly recommend you to compile on your own system
