@@ -19,7 +19,7 @@ func Info() GPUInfo {
 	out := re.Find(output)
 	output = nil
 	name := fmt.Sprintf("%q", out)
-	name = gpu[27 : len(gpu)-6]
+	name = name[27 : len(name)-6]
 	thisGPU.Name = name
 	return thisGPU
 }
