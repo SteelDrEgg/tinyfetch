@@ -35,6 +35,7 @@ func PrintMaterial(material []*Tab) {
 	var logo [18]string
 	logo = logos.Logos(os)
 
+	fmt.Println()
 	for index, line := range logo {
 		if index < len(material) {
 			fmt.Print(line)

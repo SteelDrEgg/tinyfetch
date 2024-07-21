@@ -2,6 +2,8 @@
 
 package logos
 
+import "strings"
+
 // const ubuntuLogo = `
 //
 //	            )sSQQQQQQQQQQso
@@ -179,14 +181,13 @@ var genericLogo = [18]string{
 //`
 
 func Logos(os string) [18]string {
-	if os == "ubuntu" {
+	if strings.Contains(strings.ToLower(os), "ubuntu") {
 		return ubuntuLogo
-	} else if os == "arch" {
+	} else if strings.Contains(strings.ToLower(os), "arch") {
 		return archLogo
-	} else if os == "centos" {
+	} else if strings.Contains(strings.ToLower(os), "centos") {
 		return centosLogo
-	} else if os == "linux" {
+	} else {
 		return genericLogo
 	}
-	return [18]string{}
 }
