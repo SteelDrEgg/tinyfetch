@@ -1,4 +1,4 @@
-package kits
+package util
 
 import (
 	"fmt"
@@ -23,9 +23,4 @@ func ProperUnit(byteNum uint64) (formatted string) {
 		formatted = fmt.Sprintf("%v", byteNum) + "Bytes"
 	}
 	return
-}
-
-func Float2string(num float64, decimal int) string {
-	strOut := fmt.Sprintf("%."+fmt.Sprintf("%d", decimal)+"f", num)
-	return strOut
 }

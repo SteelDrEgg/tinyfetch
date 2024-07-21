@@ -1,4 +1,4 @@
-package kits
+package gpu
 
 import (
 	"fmt"

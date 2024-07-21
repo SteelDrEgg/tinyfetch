@@ -1,4 +1,6 @@
-package kits
+//go:build linux
+
+package logos
 
 // const ubuntuLogo = `
 //
@@ -41,49 +43,6 @@ var ubuntuLogo = [18]string{
 	"         PSQQQQQQQQQQQQQQQQQQQQQSb         ",
 	"            (PSQQQQQQQQQQQQQSbC            ",
 	"                   (CDCC                   ",
-}
-
-// const appleLogo = `
-//
-//	                     )s
-//	                  sQQQQ
-//	                )QQQQQb
-//	                QQQQb
-//	        )oo     PP)  oppo
-//	    sQQQQQQQQQQQSQQQQQQQQQQQp
-//	  )QQQQQQQQQQQQQQQQQQQQQQQQQbD
-//	 (QQQQQQQQQQQQQQQQQQQQQQQQSb
-//	 QQQQQQQQQQQQQQQQQQQQQQQQQb
-//	)QQQQQQQQQQQQQQQQQQQQQQQQQ
-//	 QQQQQQQQQQQQQQQQQQQQQQQQQo
-//	 QQQQQQQQQQQQQQQQQQQQQQQQQQp
-//	 )QQQQQQQQQQQQQQQQQQQQQQQQQQSp
-//	  )QQQQQQQQQQQQQQQQQQQQQQQQQQQb
-//	   )QQQQQQQQQQQQQQQQQQQQQQQQQb
-//	    (QQQQQQQQQQQQQQQQQQQQQQSb
-//	      )SQQQQQQSSbSSQQQQQQSb
-//	         PDb          PP)
-//
-// `
-var appleLogo = [18]string{
-	"                         )s             ",
-	"                      sQQQQ             ",
-	"                    )QQQQQb             ",
-	"                    QQQQb               ",
-	"            )oo     PP)  oppo           ",
-	"        sQQQQQQQQQQQSQQQQQQQQQQQp       ",
-	"      )QQQQQQQQQQQQQQQQQQQQQQQQQbD      ",
-	"     (QQQQQQQQQQQQQQQQQQQQQQQQSb        ",
-	"     QQQQQQQQQQQQQQQQQQQQQQQQQb         ",
-	"    )QQQQQQQQQQQQQQQQQQQQQQQQQ          ",
-	"     QQQQQQQQQQQQQQQQQQQQQQQQQo         ",
-	"     QQQQQQQQQQQQQQQQQQQQQQQQQQp        ",
-	"     )QQQQQQQQQQQQQQQQQQQQQQQQQQSp      ",
-	"      )QQQQQQQQQQQQQQQQQQQQQQQQQQQb     ",
-	"       )QQQQQQQQQQQQQQQQQQQQQQQQQb      ",
-	"        (QQQQQQQQQQQQQQQQQQQQQQSb       ",
-	"          )SQQQQQQSSbSSQQQQQQSb         ",
-	"             PDb          PP)           ",
 }
 
 // const archLogo = `
@@ -222,8 +181,6 @@ var genericLogo = [18]string{
 func Logos(os string) [18]string {
 	if os == "ubuntu" {
 		return ubuntuLogo
-	} else if os == "apple" {
-		return appleLogo
 	} else if os == "arch" {
 		return archLogo
 	} else if os == "centos" {

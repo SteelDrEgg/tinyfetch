@@ -3,7 +3,7 @@ package kits
 import (
 	"fmt"
 	"github.com/fatih/color"
-	"strings"
+	"tinyfetch/kits/logos"
 )
 
 var printRed func(a ...interface{})
@@ -31,22 +31,10 @@ func calcSpacing(word string, width int) string {
 }
 
 func PrintMaterial(material []*Tab) {
-	temp := *material[1]
-	os := strings.Split(temp.Content, " ")[0]
+	os := (*material[1]).Content
 	var logo [18]string
-	if os == "macOS" {
-		logo = Logos("apple")
-	} else if os == "ubuntu" {
-		logo = Logos("ubuntu")
-	} else if os == "arch" {
-		logo = Logos("arch")
-	} else if os == "centos" {
-		logo = Logos("centos")
-	} else {
-		logo = Logos("linux")
-	}
+	logo = logos.Logos(os)
 
-	fmt.Println("")
 	for index, line := range logo {
 		if index < len(material) {
 			fmt.Print(line)
