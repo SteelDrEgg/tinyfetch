@@ -2,13 +2,14 @@ package collectinfo
 
 import (
 	"fmt"
+	"tinyfetch/kits"
+	"tinyfetch/kits/gpu"
+	"tinyfetch/kits/util"
+
 	"github.com/shirou/gopsutil/v4/cpu"
 	"github.com/shirou/gopsutil/v4/disk"
 	"github.com/shirou/gopsutil/v4/host"
 	"github.com/shirou/gopsutil/v4/mem"
-	"tinyfetch/kits"
-	"tinyfetch/kits/gpu"
-	"tinyfetch/kits/util"
 )
 
 var PrintMaterial []*kits.Tab
@@ -87,10 +88,12 @@ func HostFmt() {
 
 func GpuFmt() {
 	thisGPU := gpu.Info()
-	PrintMaterial = append(
-		PrintMaterial,
-		&kits.Tab{Title: "GPU", Content: thisGPU.Name},
-	)
+	if len(thisGPU.Name) > 0 {
+		PrintMaterial = append(
+			PrintMaterial,
+			&kits.Tab{Title: "GPU", Content: thisGPU.Name},
+		)
+	}
 	if thisGPU.VRAM != 0 {
 		PrintMaterial = append(
 			PrintMaterial,
